@@ -8,24 +8,16 @@
 </head>
 <body class="flex column">
   <header class="flex">
-    <h1>Find your film</h1>
+    <h1>My Watchlist</h1>
     <nav>
-      <a href="watchlist.html">My Watchlist</a>
+      <a href="index.html">Search for movies</a>
     </nav>
   </header>
   <main>
-    <section class="search">
-      <i class="fa-solid fa-magnifying-glass" style="color: #9ca3af;"></i>
-      <input type="text" placeholder="Search for a movie" id="search-input">
-      <button id="search-button" onclick="showSearchResults()">Search</button>
-    </section>
     <section class="movies" id="movies">
-      <div class="no-movies">
-        <i class="fa-solid fa-film" style="color: #dfdddd;"></i>
-        <p>Start exploring</p>
-      </div>
+      <!-- rendered in JavaScript -->
     </section>
   </main>
-  <script src="index.js" charset="utf-8" type="module"></script>
+  <script src="watchlist.js" charset="utf-8" type="module"></script>
 </body>
 </html>

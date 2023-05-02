@@ -1,36 +1,26 @@
+import Movie from './Movie'
+
 const apiKey = '5e86fe7d'
-const searchButton = document.getElementById('search-button')
-const searchInput = document.getElementById('search-input');
-const movies = document.getElementById('movies')
+const baseUrl = 'http://www.omdbapi.com'
 
-searchButton.addEventListener('click', getSearchResults)
-
-async function getSearchResults() {
-	const baseUrl = 'http://www.omdbapi.com'
-	const title = searchInput.value
+async function fetchSearchResultsData() {
+	const title = document.getElementById('search-input').value
 	const response = await fetch(`${baseUrl}/?s=${title}&apikey=${apiKey}`)
-	const data = await response.json()
+	return await response.json()
+}
+
+window.showSearchResults = async function() {
+	const movies = document.getElementById('movies')
+	const data = await fetchSearchResultsData();
 	if (data.Response == 'True') {
-		const titles = data.Search.map(movie => movie.Title)
+		const imdbIDs = data.Search.map(movie => movie.imdbID)
 		movies.innerHTML = ''
-		titles.forEach(title => {
-			fetch(`${baseUrl}/?t=${title}&plot=full&apikey=${apiKey}`)
+		imdbIDs.forEach(imdbID => {
+			fetch(`${baseUrl}/?i=${imdbID}&plot=full&apikey=${apiKey}`)
 				.then(res => res.json())
 				.then(result => {
-					movies.innerHTML += `
-					<div class="movie">
-						<img src="${result.Poster}" alt="${result.Title}">
-						<h3>${result.Title}</h3>
-						<p>${result.imdbRating}</p>
-						<p>${result.Runtime}</p>
-						<p>${result.Genre}</p>
-						<div class="add-to-watchlist">
-							<i class="fa-solid fa-circle-plus" style="color: #111827;"></i>
-							<button id="add-to-watchlist-button">Watchlist</button>
-						</div>
-						<p>${result.Plot}</p>
-					</div>
-			`
+					const movie = new Movie(result)
+					movies.innerHTML += movie.getHTML(true)
 				})
 		})
 	} else {
@@ -40,5 +30,9 @@ async function getSearchResults() {
 			</div>
 		`
 	}
+}
 
+window.addToWatchlist = function(event) {
+	const imdbID = event.target.dataset.imdbId
+	localStorage.setItem(imdbID, imdbID)
 }
