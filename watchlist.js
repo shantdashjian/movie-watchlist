@@ -22,7 +22,7 @@ function showWatchlist() {
 }
 
 function loadWatchlistData() {
-	return Object.keys(localStorage)
+	return Object.keys(localStorage).filter(key => key.startsWith('tt'))
 }
 
 window.removeFromWatchlist = function (event) {

@@ -9,7 +9,7 @@ inputElement.addEventListener('keydown', event => {
 	}
 })
 
-async function showSearchResults() {
+window.showSearchResults = async function() {
 	const title = inputElement.value;
 	const data = await fetchSearchResultsData(title);
 	inputElement.value = ''
