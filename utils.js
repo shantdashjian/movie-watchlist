@@ -1,7 +1,7 @@
 import Movie from "./Movie";
 
 const apiKey = '5e86fe7d'
-const baseUrl = 'http://www.omdbapi.com'
+const baseUrl = 'https://www.omdbapi.com'
 const movies = document.getElementById('movies')
 
 function renderMovies(imdbIDs) {
