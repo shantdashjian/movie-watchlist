@@ -1,23 +1,29 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Movie Watchlist</title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <link rel="stylesheet" href="index.css">
 </head>
 <body class="flex column">
-  <header class="flex">
-    <h1>My Watchlist</h1>
-    <nav>
-      <a href="index.html">Search for movies</a>
-    </nav>
-  </header>
-  <main>
-    <section class="movies" id="movies">
-      <!-- rendered in JavaScript -->
-    </section>
-  </main>
-  <script src="watchlist.js" charset="utf-8" type="module"></script>
+<header class="flex">
+  <h1 class="header-title">My Watchlist</h1>
+  <nav>
+    <a href="index.html" class="header-nav-link">Search for movies</a>
+  </nav>
+</header>
+<main>
+  <section class="space">
+  </section>
+  <section class="movies flex column" id="movies">
+    <!-- rendered in JavaScript -->
+  </section>
+</main>
+<script src="watchlist.js" charset="utf-8" type="module"></script>
 </body>
 </html>

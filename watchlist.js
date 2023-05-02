@@ -1,29 +1,11 @@
-import Movie from './Movie'
-
-const apiKey = '5e86fe7d'
-const baseUrl = 'http://www.omdbapi.com'
+import { renderMovies, movies } from './utils'
 
 showWatchlist()
 
-window.removeFromWatchlist = function (event) {
-	const imdbID = event.target.dataset.imdbId
-	localStorage.removeItem(imdbID)
-	showWatchlist()
-}
-
 function showWatchlist() {
-	const movies = document.getElementById('movies')
 	const imdbIDs = loadWatchlistData();
 	if (imdbIDs.length > 0) {
-		movies.innerHTML = ''
-		imdbIDs.forEach(imdbID => {
-			fetch(`${baseUrl}/?i=${imdbID}&plot=full&apikey=${apiKey}`)
-				.then(res => res.json())
-				.then(result => {
-					const movie = new Movie(result)
-					movies.innerHTML += movie.getHTML(false)
-				})
-		})
+		renderMovies(imdbIDs);
 	} else {
 		movies.innerHTML = `
 				<div class="no-movies">
@@ -42,3 +24,10 @@ function showWatchlist() {
 function loadWatchlistData() {
 	return Object.keys(localStorage)
 }
+
+window.removeFromWatchlist = function (event) {
+	const imdbID = event.target.dataset.imdbId
+	localStorage.removeItem(imdbID)
+	showWatchlist()
+}
+

@@ -1,31 +1,37 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Movie Watchlist</title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <link rel="stylesheet" href="index.css">
 </head>
 <body class="flex column">
-  <header class="flex">
-    <h1>Find your film</h1>
-    <nav>
-      <a href="watchlist.html">My Watchlist</a>
-    </nav>
-  </header>
-  <main>
-    <section class="search">
-      <i class="fa-solid fa-magnifying-glass" style="color: #9ca3af;"></i>
-      <input type="text" placeholder="Search for a movie" id="search-input">
-      <button id="search-button" onclick="showSearchResults()">Search</button>
-    </section>
-    <section class="movies" id="movies">
-      <div class="no-movies">
-        <i class="fa-solid fa-film" style="color: #dfdddd;"></i>
-        <p>Start exploring</p>
-      </div>
-    </section>
-  </main>
-  <script src="index.js" charset="utf-8" type="module"></script>
+<header class="flex">
+  <h1 class="header-title">Find your film</h1>
+  <nav>
+    <a href="watchlist.html" class="header-nav-link">My Watchlist</a>
+  </nav>
+</header>
+<main>
+  <section class="search flex">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" placeholder="Search for a movie" id="search-input">
+    <button class="search-button" id="search-button" onclick="showSearchResults()">Search</button>
+  </section>
+  <section class="space">
+  </section>
+  <section class="movies flex column" id="movies">
+    <div class="no-movies flex column">
+      <i class="fa-solid fa-film movie-icon"></i>
+      <p>Start exploring</p>
+    </div>
+  </section>
+</main>
+<script src="index.js" charset="utf-8" type="module"></script>
 </body>
 </html>
