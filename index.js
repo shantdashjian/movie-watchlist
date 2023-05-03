@@ -1,15 +1,14 @@
-import { renderMovies, apiKey, baseUrl, movies } from './utils'
+import {renderMovies, apiKey, baseUrl, movies} from './utils'
 
 const inputElement = document.getElementById('search-input')
 
 inputElement.addEventListener('keydown', event => {
 	if (event.key === 'Enter') {
-		event.preventDefault();
 		showSearchResults()
 	}
 })
 
-window.showSearchResults = async function() {
+window.showSearchResults = async function () {
 	const title = inputElement.value;
 	const data = await fetchSearchResultsData(title);
 	inputElement.value = ''

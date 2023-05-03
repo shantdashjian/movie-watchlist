@@ -1,9 +1,11 @@
+const goldenStarMinimumRating = 7;
+
 export default class Movie {
 	constructor(movie) {
 		Object.assign(this, movie)
 	}
 
-	getHtml = function (addToWatchlist) {
+	getHtml(addToWatchlist) {
 		const plot = this.getPlot()
 		const runtime = this.getRuntime();
 		const goldenStar = this.getGoldenStar()
@@ -37,7 +39,7 @@ export default class Movie {
 									class="add-to-watchlist-button"
 									data-imdb-id="${this.imdbID}"
 									onclick="addToWatchlist(event)">
-										<i class="fa-solid fa-circle-plus" style="color: #111827;"></i>
+										<i class="fa-solid fa-circle-plus plus-minus-icon"></i>
 										Watchlist
 								</button>
 							</div>
@@ -47,7 +49,7 @@ export default class Movie {
 									class="remove-from-watchlist-button"
 									data-imdb-id="${this.imdbID}"
 									onclick="removeFromWatchlist(event)">
-										<i class="fa-solid fa-circle-minus" style="color: #111827;"></i>
+										<i class="fa-solid fa-circle-minus plus-minus-icon"></i>
 										Remove
 									</button>
 							</div>
@@ -55,9 +57,9 @@ export default class Movie {
 	}
 
 	getGoldenStar() {
-		return this.imdbRating >= 7 ? `
-			<i class="fa-solid fa-star star"></i>
-		` : `<span class="star"></span>`;
+		return this.imdbRating >= goldenStarMinimumRating ? `
+			<i class="fa-solid fa-star star-icon"></i>
+		` : `<span class="star-icon"></span>`;
 	}
 
 	getRuntime() {

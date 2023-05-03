@@ -10,12 +10,46 @@ html, body {
 	font-family: 'Inter', sans-serif;
 }
 
+/*Utility  classes*/
 .flex {
 	display: flex;
 }
 
 .column {
 	flex-direction: column;
+}
+
+/*Icons*/
+.search-icon {
+	color: #9ca3af;
+	padding: 0.6em;
+}
+
+.plus-minus-icon {
+	color: #111827;
+}
+
+.movie-icon {
+	font-size: 5rem;
+}
+
+.star-icon {
+	color: #FEC654;
+	text-align: center;
+	padding: 0 6px 4px 6px;
+}
+
+/*Active, focus, hover pseudo-classes*/
+button:hover,
+button:focus,
+a:hover,
+a:focus {
+	cursor: pointer;
+}
+
+input:active,
+input:focus {
+	outline: none;
 }
 
 a {
@@ -73,11 +107,6 @@ input {
 	width: 100%;
 }
 
-input:active,
-input:focus {
-	outline: none;
-}
-
 .search {
 	border: 1px solid #D1D5DB;
 	border-radius: 6px;
@@ -96,11 +125,6 @@ input:focus {
 	border: none;
 	font-family: inherit;
 	padding: 0 2.5em;
-}
-
-.search-icon {
-	color: #9ca3af;
-	padding: 0.6em;
 }
 
 .space {
@@ -130,10 +154,6 @@ input:focus {
 	text-align: center;
 }
 
-.movie-icon {
-	font-size: 5rem;
-}
-
 .movie {
 	border-bottom: 1px solid #E5E7EB;
 	padding: 25px 0;
@@ -145,12 +165,6 @@ input:focus {
 	width: 99px;
 	height: 147px;
 	border-radius: 4px;
-}
-
-.star {
-	color: #FEC654;
-	text-align: center;
-	padding: 0 6px 4px 6px;
 }
 
 .plot {
@@ -212,11 +226,4 @@ p, h3 {
 	font-weight: 700;
 	font-size: 0.9rem;
 	line-height: 1.4;
-}
-
-button:hover,
-button:focus,
-a:hover,
-a:focus {
-	cursor: pointer;
 }

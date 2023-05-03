@@ -5,7 +5,7 @@ const baseUrl = 'https://www.omdbapi.com'
 const movies = document.getElementById('movies')
 
 function renderMovies(imdbIDs) {
-	const addToWatchlist = window.location.href.includes('index.html')
+	const addToWatchlist = !window.location.href.includes('watchlist.html')
 	movies.innerHTML = ''
 	imdbIDs.forEach(imdbID => {
 		fetch(`${baseUrl}/?i=${imdbID}&plot=full&apikey=${apiKey}`)
