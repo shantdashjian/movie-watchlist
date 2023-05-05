@@ -14,7 +14,7 @@ function showWatchlist() {
 							<i class="fa-solid fa-circle-plus" style="color: #111827;"></i>
 							<a
 								class="go-to-search-link"
-								href="index.html">Let’s add some movies!</a>
+								href="./index.html">Let’s add some movies!</a>
 						</div>
 					</div>
 				`
