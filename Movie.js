@@ -1,4 +1,5 @@
-const goldenStarMinimumRating = 7;
+const goldenStarMinimumRating = 7
+const defaultImageUrl = './images/no-image-available.jpeg'
 
 export default class Movie {
 	constructor(movie) {
@@ -6,13 +7,14 @@ export default class Movie {
 	}
 
 	getHtml(addToWatchlist) {
-		const plot = this.getPlot()
-		const runtime = this.getRuntime();
+		const poster = this.getPoster()
 		const goldenStar = this.getGoldenStar()
+		const runtime = this.getRuntime();
 		const addOrRemoveButton = this.getAddOrRemoveButton(addToWatchlist)
+		const plot = this.getPlot()
 		return `
 						<div class="movie flex">
-							<img class="poster" src="${this.Poster}" alt="${this.Title}">
+							<img class="poster" src="${poster}" alt="${this.Title}">
 							<div class="movie-text flex column">
 								<div class="title-star-rating flex">
 									<h3>${this.Title}</h3>
@@ -30,6 +32,20 @@ export default class Movie {
 							</div>
 						</div>
 					`
+	}
+
+	getPoster() {
+		return this.Poster == 'N/A' ? defaultImageUrl : this.Poster
+	}
+
+	getGoldenStar() {
+		return this.imdbRating >= goldenStarMinimumRating ? `
+			<i class="fa-solid fa-star star-icon"></i>
+		` : `<span class="star-icon"></span>`
+	}
+
+	getRuntime() {
+		return this.Runtime == 'N/A' ? 'No runtime' : this.Runtime
 	}
 
 	getAddOrRemoveButton(addToWatchlist) {
@@ -53,20 +69,10 @@ export default class Movie {
 										Remove
 									</button>
 							</div>
-		`;
-	}
-
-	getGoldenStar() {
-		return this.imdbRating >= goldenStarMinimumRating ? `
-			<i class="fa-solid fa-star star-icon"></i>
-		` : `<span class="star-icon"></span>`;
-	}
-
-	getRuntime() {
-		return this.Runtime == 'N/A' ? 'No runtime' : this.Runtime;
+		`
 	}
 
 	getPlot() {
-		return this.Plot == 'N/A' ? 'No plot is available for this movie.' : this.Plot;
+		return this.Plot == 'N/A' ? 'No plot is available for this movie.' : this.Plot
 	}
 }

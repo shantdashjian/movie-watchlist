@@ -10,15 +10,23 @@ inputElement.addEventListener('keydown', event => {
 
 window.showSearchResults = async function () {
 	const title = inputElement.value;
-	const data = await fetchSearchResultsData(title);
-	inputElement.value = ''
-	if (data.Response == 'True') {
-		const imdbIDs = data.Search.map(movie => movie.imdbID)
-		renderMovies(imdbIDs);
-	} else {
-		movies.innerHTML = `
+	try {
+		const data = await fetchSearchResultsData(title);
+		inputElement.value = ''
+		if (data.Response == 'True') {
+			const imdbIDs = data.Search.map(movie => movie.imdbID)
+			renderMovies(imdbIDs);
+		} else {
+			movies.innerHTML = `
 			<div class="no-movies flex column">
 				<p>Unable to find what you’re looking for. Please try another search.</p>
+			</div>
+		`
+		}
+	} catch (error) {
+		movies.innerHTML = `
+			<div class="no-movies flex column">
+				<p>Something went wrong with your request.</p>
 			</div>
 		`
 	}
